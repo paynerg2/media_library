@@ -1,0 +1,13 @@
+# Dependency directories
+node_modules/
+
+# Coverage directory
+coverage
+
+# Compiled binary
+build
+
+# Logs
+logs
+*.log
+npm-debug.log*
