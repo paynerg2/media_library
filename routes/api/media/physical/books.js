@@ -19,7 +19,10 @@ router.post('/', (req, res) => {
         title: req.body.title,
         author: req.body.author,
         ISBN: req.body.ISBN,
-        type: req.body.type
+        type: req.body.type,
+        demographic: req.body.demographic,
+        language: req.body.language,
+        publisher: req.body.publisher
     });
 
     newBook.save().then(book => res.json(book));
