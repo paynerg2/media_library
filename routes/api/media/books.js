@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 // Book Model
-const Book = require('../../../../models/Book');
+const Book = require('../../../models/Book');
 
-// @route GET api/media/physical/books
+// @route GET api/media/books
 // @desc Get all books
 router.get('/', (req, res) => {
     Book.find()
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         .then(books => res.json(books));
 });
 
-// @route POST api/media/physical/books
+// @route POST api/media/books
 // @desc Create a book
 router.post('/', (req, res) => {
     const newBook = new Book({
@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
     newBook.save().then(book => res.json(book));
 });
 
-// @route DELETE api/media/physical/books/:id
+// @route DELETE api/media/books/:id
 // @desc Delete a book
 router.delete('/:id', (req, res) => {
     Book.findById(req.params.id)

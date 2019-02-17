@@ -12,7 +12,10 @@ const DiscSchema = new Schema({
         enum: ['DVD', 'BD', 'LD']
     },
     publisher: String,
-    partOfSet: Boolean
+    partOfSet: {
+        type: Boolean,
+        required: true
+    }
 });
 
 module.exports = Disc = mongoose.model('disc', DiscSchema);
