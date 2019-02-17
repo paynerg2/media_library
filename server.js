@@ -19,7 +19,10 @@ mongoose
     .catch(err => console.log(err));
 
 // Use routes
-app.use('/api/media/physical/books', books);
+app.use('/api/media/books', books);
+app.use('/api/media/discs', discs);
+app.use('/api/media/games', games);
+app.use('/api/media/videos', videos);
 
 app.get('/', (req, res) => {
     res.send('Hello world!');
