@@ -13,4 +13,4 @@ logs
 npm-debug.log*
 
 # VSCode
-.vscode
+.vscode/
