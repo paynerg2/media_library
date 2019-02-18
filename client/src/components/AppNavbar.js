@@ -6,10 +6,7 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
+    NavLink
 } from 'reactstrap';
 
 export default class NavbarHeader extends Component {
@@ -32,12 +29,17 @@ export default class NavbarHeader extends Component {
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} className="mr-2" />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav navbar>
+                        <Nav navbar className="mr-auto">
                             <NavItem>
-                                <NavLink href="#">Components</NavLink>
+                                <NavLink href="#">About</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="#">Github</NavLink>
+                            </NavItem>
+                        </Nav>
+                        <Nav navbar className="ml-auto">
+                            <NavItem>
+                                <NavLink href="#">GoogleAuth</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>

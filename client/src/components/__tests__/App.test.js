@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import App from '../App';
 import AppNavbar from '../AppNavbar';
 import GoogleAuth from '../GoogleAuth';
-import LibraryTree from '../LibraryTree';
+import LibraryTab from '../LibraryTab';
 import MediaListView from '../MediaListView';
 
 let wrapped;
@@ -16,12 +16,8 @@ it('shows a navbar', () => {
     expect(wrapped.find(AppNavbar).length).toEqual(1);
 });
 
-it('shows google authentication object', () => {
-    expect(wrapped.find(GoogleAuth).length).toEqual(1);
-});
-
 it('shows a library tree', () => {
-    expect(wrapped.find(LibraryTree).length).toEqual(1);
+    expect(wrapped.find(LibraryTab).length).toEqual(1);
 });
 
 it('shows a media list view', () => {
