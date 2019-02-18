@@ -1,5 +1,12 @@
 import React from 'react';
 
+import AppNavbar from './AppNavbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default () => {
-    return <div>App</div>;
+    return (
+        <div>
+            <AppNavbar />
+        </div>
+    );
 };

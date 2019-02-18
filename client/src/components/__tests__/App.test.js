@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import App from '../App';
-import Navbar from '../Navbar';
+import AppNavbar from '../AppNavbar';
 import GoogleAuth from '../GoogleAuth';
 import LibraryTree from '../LibraryTree';
 import MediaListView from '../MediaListView';
@@ -13,7 +13,7 @@ beforeEach(() => {
 });
 
 it('shows a navbar', () => {
-    expect(wrapped.find(Navbar).length).toEqual(1);
+    expect(wrapped.find(AppNavbar).length).toEqual(1);
 });
 
 it('shows google authentication object', () => {
