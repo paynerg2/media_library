@@ -2,7 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const books = require('./routes/api/media/physical/books');
+const books = require('./routes/api/media/books');
+const discs = require('./routes/api/media/discs');
+const games = require('./routes/api/media/games');
+const videos = require('./routes/api/media/Videos');
 
 const app = express();
 
@@ -22,7 +25,7 @@ mongoose
 app.use('/api/media/books', books);
 app.use('/api/media/discs', discs);
 app.use('/api/media/games', games);
-app.use('/api/media/videos', videos);
+app.use('/api/media/Videos', videos);
 
 app.get('/', (req, res) => {
     res.send('Hello world!');
