@@ -7,14 +7,20 @@ const fakeItemData = [
         name: 'fake item',
         author: 'fake author',
         demographic: 'fake demographic',
-        type: 'fake type'
+        type: 'fake type',
+        ISBN: 123456789,
+        language: 'FLN',
+        publisher: 'fake publisher, LLC'
     },
     {
         id: 2,
         name: 'fake item',
         author: 'fake author',
         demographic: 'fake demographic',
-        type: 'fake type'
+        type: 'fake type',
+        ISBN: 123456789,
+        language: 'FLN',
+        publisher: 'fake publisher, LLC'
     }
 ];
 

@@ -12,7 +12,11 @@ class MediaListView extends Component {
 
     renderListItems = ({ mediaItems }) => {
         return mediaItems.map(item => {
-            return <div key={item.id}>{item.name}</div>;
+            return (
+                <div key={item.id}>
+                    <MediaListItem item={item} />
+                </div>
+            );
         });
     };
 

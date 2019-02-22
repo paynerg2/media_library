@@ -1,16 +1,21 @@
 import React from 'react';
 import { Card, CardTitle, CardBody, CardText, CardHeader } from 'reactstrap';
 
-const MediaListItem = () => {
+const MediaListItem = ({ item }) => {
     return (
         <div>
             <Card>
-                <CardHeader>Title, Vol. X</CardHeader>
+                <CardHeader>{item.name}</CardHeader>
                 <CardBody>
-                    <CardTitle>Author</CardTitle>
+                    <CardTitle>{item.author}</CardTitle>
                     <CardText>
-                        <div>type - - - demographic</div>
-                        <div>(Language) Publisher - - - ISBN</div>
+                        <span>
+                            {item.type} - - - {item.demographic}
+                        </span>
+                        <br />
+                        <span>
+                            ({item.language}) {item.publisher} - - - {item.ISBN}
+                        </span>
                     </CardText>
                 </CardBody>
             </Card>
