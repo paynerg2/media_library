@@ -16,7 +16,7 @@ it('shows a navbar', () => {
     expect(wrapped.find(AppNavbar).length).toEqual(1);
 });
 
-it('shows a library tree', () => {
+it('shows a library tab', () => {
     expect(wrapped.find(LibraryTab).length).toEqual(1);
 });
 
