@@ -7,7 +7,7 @@ const fakeItemData = [
         name: 'fake item',
         author: 'fake author',
         demographic: 'fake demographic',
-        type: 'fake type',
+        type: 'book',
         ISBN: 123456789,
         language: 'FLN',
         publisher: 'fake publisher, LLC'
@@ -17,7 +17,7 @@ const fakeItemData = [
         name: 'fake item',
         author: 'fake author',
         demographic: 'fake demographic',
-        type: 'fake type',
+        type: 'disc',
         ISBN: 123456789,
         language: 'FLN',
         publisher: 'fake publisher, LLC'

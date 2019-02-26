@@ -11,7 +11,10 @@ class MediaListView extends Component {
     }
 
     renderListItems = ({ mediaItems }) => {
-        return mediaItems.map(item => {
+        const filteredItems = mediaItems.filter(
+            item => item.type === this.props.selectedType
+        );
+        return filteredItems.map(item => {
             return (
                 <div key={item.id}>
                     <MediaListItem item={item} />
@@ -31,7 +34,8 @@ class MediaListView extends Component {
 
 const mapStateToProps = state => {
     return {
-        mediaItems: state.mediaItem
+        mediaItems: state.mediaItem,
+        selectedType: state.selectedTab
     };
 };
 

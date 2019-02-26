@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Nav, NavItem, NavLink } from 'reactstrap';
+import { selectedTabChanged } from '../actions/tabActions';
 
-const LibraryTree = () => {
+const LibraryTab = () => {
     return (
         <div>
             <Nav tabs>
@@ -22,4 +24,7 @@ const LibraryTree = () => {
     );
 };
 
-export default LibraryTree;
+export default connect(
+    null,
+    { selectedTabChanged }
+)(LibraryTab);
