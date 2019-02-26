@@ -27,10 +27,6 @@ app.use('/api/media/discs', discs);
 app.use('/api/media/games', games);
 app.use('/api/media/Videos', videos);
 
-app.get('/', (req, res) => {
-    res.send('Hello world!');
-});
-
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
