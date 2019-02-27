@@ -1,6 +1,6 @@
 import { SELECTED_TAB_CHANGED } from '../actions/types';
 
-const initialState = 'disc';
+const initialState = 'book';
 
 export default (state = initialState, action) => {
     switch (action.type) {

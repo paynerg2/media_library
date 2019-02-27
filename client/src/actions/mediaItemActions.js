@@ -1,4 +1,4 @@
-import axios from 'axios';
+import Library from '../apis/Library';
 import { GET_MEDIA_ITEMS, SAVE_MEDIA_ITEM } from './types';
 
 const fakeItemData = [
@@ -24,11 +24,13 @@ const fakeItemData = [
     }
 ];
 
-export const getMediaItems = () => dispatch => {
-    // TODO - Add actual logic
-    dispatch({
-        type: GET_MEDIA_ITEMS,
-        payload: fakeItemData
+export const getMediaItems = library => dispatch => {
+    console.log('get media items action called');
+    Library.get(`/api/media/${library}`).then(res => {
+        dispatch({
+            type: GET_MEDIA_ITEMS,
+            payload: res.data
+        });
     });
 };
 

@@ -2,17 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import { selectedTabChanged } from '../actions/tabActions';
+import { getMediaItems } from '../actions/mediaItemActions';
+import { capitalize, pluralize } from '../helpers';
 
 class LibraryTab extends Component {
-    capitalize = s => {
-        if (typeof s !== 'string') return '';
-        return s.charAt(0).toUpperCase() + s.slice(1);
-    };
-
-    pluralize = s => {
-        return s + 's';
-    };
-
     renderTabs() {
         const tabs = ['book', 'disc', 'video', 'game'];
 
@@ -26,7 +19,7 @@ class LibraryTab extends Component {
                             tab === this.props.selectedTab ? 'active' : ''
                         }
                     >
-                        {this.capitalize(this.pluralize(tab))}
+                        {capitalize(pluralize(tab))}
                     </NavLink>
                 </NavItem>
             );
@@ -36,21 +29,7 @@ class LibraryTab extends Component {
     render() {
         return (
             <div>
-                <Nav tabs>
-                    {this.renderTabs()}
-                    {/* <NavItem>
-                        <NavLink className="active">Books</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink>Discs</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink>Videos</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink>Games</NavLink>
-                    </NavItem> */}
-                </Nav>
+                <Nav tabs>{this.renderTabs()}</Nav>
             </div>
         );
     }
@@ -64,5 +43,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { selectedTabChanged }
+    { selectedTabChanged, getMediaItems }
 )(LibraryTab);

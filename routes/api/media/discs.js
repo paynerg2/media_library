@@ -8,7 +8,7 @@ const Disc = require('../../../models/Disc');
 //       Should return all discs
 router.get('/', (req, res) => {
     Disc.find()
-        .sort({ name: 1 })
+        .sort({ title: 1 })
         .then(discs => res.json(discs));
 });
 
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 //       Add a new disc
 router.post('/', (req, res) => {
     const newDisc = new Disc({
-        name: req.body.name,
+        title: req.body.title,
         format: req.body.format,
         publisher: req.body.publisher,
         partOfSet: req.body.partOfSet
