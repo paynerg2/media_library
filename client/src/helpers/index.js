@@ -4,6 +4,7 @@ export const capitalize = s => {
     return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
-export const pluralize = s => {
-    return s + 's';
+export const pluralize = word => {
+    // Meant to only deal with simple, regular nouns
+    return word ? word + 's' : '';
 };

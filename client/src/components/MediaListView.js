@@ -15,7 +15,7 @@ class MediaListView extends Component {
         return mediaItems.map(item => {
             return (
                 <div key={item._id}>
-                    <MediaListItem item={item} />
+                    <MediaListItem item={item} type={this.props.selectedType} />
                 </div>
             );
         });

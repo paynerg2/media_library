@@ -6,7 +6,8 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink
+    NavLink,
+    Button
 } from 'reactstrap';
 
 export default class NavbarHeader extends Component {
@@ -38,6 +39,11 @@ export default class NavbarHeader extends Component {
                             </NavItem>
                         </Nav>
                         <Nav navbar className="ml-auto">
+                            <NavItem>
+                                <Button outline color="danger">
+                                    +
+                                </Button>
+                            </NavItem>
                             <NavItem>
                                 <NavLink href="#">GoogleAuth</NavLink>
                             </NavItem>
