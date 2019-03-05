@@ -40,11 +40,6 @@ export default class NavbarHeader extends Component {
                         </Nav>
                         <Nav navbar className="ml-auto">
                             <NavItem>
-                                <Button outline color="danger">
-                                    +
-                                </Button>
-                            </NavItem>
-                            <NavItem>
                                 <NavLink href="#">GoogleAuth</NavLink>
                             </NavItem>
                         </Nav>

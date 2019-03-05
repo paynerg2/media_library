@@ -4,6 +4,7 @@ import { Nav, NavItem, NavLink, Navbar } from 'reactstrap';
 import { selectedTabChanged } from '../actions/tabActions';
 import { getMediaItems } from '../actions/mediaItemActions';
 import { capitalize, pluralize } from '../helpers';
+import MediaModal from './MediaModal';
 
 class LibraryTab extends Component {
     renderTabs() {
@@ -32,6 +33,9 @@ class LibraryTab extends Component {
                 <Navbar>
                     <Nav tabs>{this.renderTabs()}</Nav>
                     <Nav>
+                        <NavItem>
+                            <MediaModal />
+                        </NavItem>
                         <NavItem className="ml-auto">
                             <NavLink>Search</NavLink>
                         </NavItem>
