@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const VideoSchema = new Schema({
+    id: { type: Schema.ObjectId },
     title: {
         type: String,
         required: true

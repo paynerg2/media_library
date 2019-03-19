@@ -5,6 +5,8 @@ import GameForm from './Forms/GameForm';
 import DiscForm from './Forms/DiscForm';
 import VideoForm from './Forms/VideoForm';
 
+// TODO: Convert to a format which can send data as JSON
+
 class MediaModal extends Component {
     state = { modal: false };
 

@@ -1,6 +1,8 @@
 import { SELECTED_TAB_CHANGED, GET_MEDIA_ITEMS } from './types';
 import Library from '../apis/Library';
 
+// TODO: implement some form of memoization
+
 export const selectedTabChanged = tab => async dispatch => {
     await dispatch({
         type: SELECTED_TAB_CHANGED,

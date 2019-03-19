@@ -1,5 +1,7 @@
 import { SIGN_IN, SIGN_OUT } from './types';
 
+// TODO: Replace with OAuth sign-in, custom user, password encryption
+
 export const signIn = userId => {
     return {
         type: SIGN_IN,
