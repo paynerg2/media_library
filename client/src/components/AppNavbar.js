@@ -6,9 +6,10 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    Button
+    NavLink
 } from 'reactstrap';
+
+import GoogleAuth from '../components/GoogleAuth';
 
 export default class NavbarHeader extends Component {
     state = {
@@ -40,7 +41,7 @@ export default class NavbarHeader extends Component {
                         </Nav>
                         <Nav navbar className="ml-auto">
                             <NavItem>
-                                <NavLink href="#">GoogleAuth</NavLink>
+                                <GoogleAuth />
                             </NavItem>
                         </Nav>
                     </Collapse>

@@ -34,7 +34,7 @@ class LibraryTab extends Component {
                     <Nav tabs>{this.renderTabs()}</Nav>
                     <Nav>
                         <NavItem>
-                            <MediaModal />
+                            <MediaModal type={this.props.selectedTab} />
                         </NavItem>
                         <NavItem className="ml-auto">
                             <NavLink>Search</NavLink>
