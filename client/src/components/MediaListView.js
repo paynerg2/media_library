@@ -13,6 +13,7 @@ class MediaListView extends Component {
 
     renderListItems = ({ mediaItems }) => {
         return mediaItems.map(item => {
+            console.log(item);
             return (
                 <div key={item._id}>
                     <MediaListItem item={item} type={this.props.selectedType} />
@@ -22,8 +23,6 @@ class MediaListView extends Component {
     };
 
     render() {
-        console.log(this.props.selectedType);
-        console.log(this.props.mediaItems);
         return (
             <div>
                 <div>{this.renderListItems(this.props.mediaItems)}</div>

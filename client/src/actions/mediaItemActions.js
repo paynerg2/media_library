@@ -11,9 +11,12 @@ export const getMediaItems = library => dispatch => {
     });
 };
 
-export const saveMediaItem = item => dispatch => {
-    dispatch({
-        type: SAVE_MEDIA_ITEM,
-        payload: item
+export const saveMediaItem = (library, item) => dispatch => {
+    Library.post(`/api/media/${library}`, item).then(res => {
+        console.log(res);
+        dispatch({
+            type: SAVE_MEDIA_ITEM,
+            payload: { ...item, _id: res.data._id }
+        });
     });
 };

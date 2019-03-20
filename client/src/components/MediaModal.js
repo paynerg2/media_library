@@ -18,7 +18,7 @@ class MediaModal extends Component {
 
     renderForm = type => {
         if (type === 'book') {
-            return <BookForm />;
+            return <BookForm onClick={this.toggle} />;
         } else if (type === 'game') {
             return <GameForm />;
         } else if (type === 'disc') {
@@ -39,15 +39,7 @@ class MediaModal extends Component {
                     <ModalHeader toggle={this.toggle}>{`Add ${
                         this.props.type
                     }`}</ModalHeader>
-                    <ModalBody>{this.renderForm(this.props.type)}</ModalBody>
-                    <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>
-                            Submit
-                        </Button>
-                        <Button color="secondary" onClick={this.toggle}>
-                            Cancel
-                        </Button>
-                    </ModalFooter>
+                    {this.renderForm(this.props.type)}
                 </Modal>
             </div>
         );

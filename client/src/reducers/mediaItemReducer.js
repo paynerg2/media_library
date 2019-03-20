@@ -12,9 +12,10 @@ export default (state = initialState, action) => {
                 mediaItems: action.payload
             };
         case SAVE_MEDIA_ITEM:
+            console.log(action.payload);
             return {
                 ...state,
-                mediaItems: [...state, action.payload]
+                mediaItems: [...state.mediaItems, action.payload]
             };
         default:
             return state;
