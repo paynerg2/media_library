@@ -27,7 +27,6 @@ class MediaModal extends Component {
                 />
             );
         } else if (type === 'game') {
-            // TODO: Convert to class-based component
             return (
                 <GameForm
                     onClick={this.toggle}

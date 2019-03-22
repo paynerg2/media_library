@@ -36,6 +36,7 @@ export const deleteMediaItem = (library, id) => dispatch => {
 };
 
 export const editMediaItem = (library, id, item) => dispatch => {
+    console.log(item);
     Library.put(`api/media/${library}/${id}`, item).then(res => {
         console.log(res);
         dispatch({

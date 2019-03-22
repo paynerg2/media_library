@@ -97,8 +97,12 @@ class DiscForm extends Component {
                             <Input
                                 type="checkbox"
                                 id="multiplayer"
-                                onChange={this.onChange}
-                                value={this.state.multiplayer}
+                                onChange={e =>
+                                    this.setState({
+                                        partOfSet: e.target.checked
+                                    })
+                                }
+                                checked={this.state.partOfSet}
                             />{' '}
                             Part of Set:
                         </Label>
