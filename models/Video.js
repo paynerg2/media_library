@@ -12,7 +12,8 @@ const VideoSchema = new Schema({
         required: true
     },
     quality: String,
-    location: String
+    location: String,
+    userId: String
 });
 
 module.exports = Video = mongoose.model('video', VideoSchema);

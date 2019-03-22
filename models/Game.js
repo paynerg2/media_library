@@ -16,7 +16,8 @@ const GameSchema = new Schema({
         enum: ['physical', 'digital', 'ROM'],
         required: true
     },
-    multiplayer: Boolean
+    multiplayer: Boolean,
+    userId: String
 });
 
 module.exports = Game = mongoose.model('game', GameSchema);

@@ -19,7 +19,8 @@ const BookSchema = new Schema({
         enum: ['shounen', 'shoujo', 'seinen', 'josei', 'kids']
     },
     language: String,
-    publisher: String
+    publisher: String,
+    userId: String
 });
 
 module.exports = Book = mongoose.model('book', BookSchema);

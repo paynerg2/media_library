@@ -11,21 +11,24 @@ class MediaListView extends Component {
         this.props.getMediaItems(library);
     }
 
-    renderListItems = ({ mediaItems }) => {
-        return mediaItems.map(item => {
-            console.log(item);
-            return (
-                <div key={item._id}>
-                    <MediaListItem item={item} type={this.props.selectedType} />
-                </div>
-            );
-        });
+    renderListItems = ({ mediaItems, userId, selectedType }) => {
+        console.log(userId);
+        console.log(mediaItems);
+        return mediaItems
+            .filter(item => item.userId === userId)
+            .map(item => {
+                return (
+                    <div key={item._id}>
+                        <MediaListItem item={item} type={selectedType} />
+                    </div>
+                );
+            });
     };
 
     render() {
         return (
             <div>
-                <div>{this.renderListItems(this.props.mediaItems)}</div>
+                <div>{this.renderListItems(this.props)}</div>
             </div>
         );
     }
@@ -33,8 +36,9 @@ class MediaListView extends Component {
 
 const mapStateToProps = state => {
     return {
-        mediaItems: state.mediaItem,
-        selectedType: state.selectedTab
+        mediaItems: state.mediaItem.mediaItems,
+        selectedType: state.selectedTab,
+        userId: state.auth.userId
     };
 };
 

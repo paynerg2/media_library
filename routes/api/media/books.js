@@ -22,7 +22,8 @@ router.post('/', (req, res) => {
         type: req.body.type,
         demographic: req.body.demographic,
         language: req.body.language,
-        publisher: req.body.publisher
+        publisher: req.body.publisher,
+        userId: req.body.userId
     });
 
     newBook.save().then(book => res.json(book));
@@ -34,6 +35,16 @@ router.delete('/:id', (req, res) => {
     Book.findById(req.params.id)
         .then(book => book.remove().then(() => res.json({ success: true })))
         .catch(err => res.status(404).json({ success: false }));
+});
+
+// @route PUT api/media/books/:id
+// @desc Edit a book
+router.put('/:id', (req, res) => {
+    Book.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
+    }).then(book =>
+        res.json(book).catch(err => res.status(404).json({ success: false }))
+    );
 });
 
 module.exports = router;

@@ -16,7 +16,8 @@ const DiscSchema = new Schema({
     partOfSet: {
         type: Boolean,
         required: true
-    }
+    },
+    userId: String
 });
 
 module.exports = Disc = mongoose.model('disc', DiscSchema);

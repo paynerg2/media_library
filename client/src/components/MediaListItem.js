@@ -1,12 +1,24 @@
 import React from 'react';
-import { Card, CardTitle, CardBody, CardText, CardHeader } from 'reactstrap';
+import {
+    Button,
+    Card,
+    CardTitle,
+    CardBody,
+    CardText,
+    CardHeader
+} from 'reactstrap';
 
-const MediaListItem = ({ item, type }) => {
+import { pluralize } from '../helpers';
+import MediaModal from '../components/MediaModal';
+import { connect } from 'react-redux';
+import { deleteMediaItem } from '../actions/mediaItemActions';
+import Octicon, { Trashcan, Pencil } from '@githubprimer/octicons-react';
+
+const MediaListItem = ({ item, type, deleteMediaItem }) => {
     const renderItem = type => {
         if (type === 'book') {
             return (
                 <React.Fragment>
-                    <CardHeader>{item.title}</CardHeader>
                     <CardBody>
                         <CardTitle>{item.author}</CardTitle>
                         <CardText>
@@ -25,7 +37,6 @@ const MediaListItem = ({ item, type }) => {
         } else if (type === 'disc') {
             return (
                 <React.Fragment>
-                    <CardHeader>{item.title}</CardHeader>
                     <CardBody>
                         <CardTitle>{item.publisher}</CardTitle>
                         <CardText>{item.format}</CardText>
@@ -35,7 +46,6 @@ const MediaListItem = ({ item, type }) => {
         } else if (type === 'video') {
             return (
                 <React.Fragment>
-                    <CardHeader>{item.title}</CardHeader>
                     <CardBody>
                         <CardTitle>{`Number of Episodes: ${
                             item.episodes
@@ -48,7 +58,6 @@ const MediaListItem = ({ item, type }) => {
         } else if (type === 'game') {
             return (
                 <React.Fragment>
-                    <CardHeader>{item.title}</CardHeader>
                     <CardBody>
                         <CardTitle>{item.platform}</CardTitle>
                         <CardText>{item.format}</CardText>
@@ -65,9 +74,34 @@ const MediaListItem = ({ item, type }) => {
 
     return (
         <div>
-            <Card>{renderItem(type)}</Card>
+            <Card>
+                <CardHeader>
+                    <div>
+                        {item.title}
+                        <MediaModal
+                            type={type}
+                            icon={Pencil}
+                            selectedItem={item}
+                            mode={'edit'}
+                        />
+                        <Button
+                            color="none"
+                            size="sm"
+                            onClick={() =>
+                                deleteMediaItem(pluralize(type), item._id)
+                            }
+                        >
+                            <Octicon icon={Trashcan} />
+                        </Button>
+                    </div>
+                </CardHeader>
+                {renderItem(type)}
+            </Card>
         </div>
     );
 };
 
-export default MediaListItem;
+export default connect(
+    null,
+    { deleteMediaItem }
+)(MediaListItem);

@@ -27,7 +27,7 @@ mongoose
 app.use('/api/media/books', books);
 app.use('/api/media/discs', discs);
 app.use('/api/media/games', games);
-app.use('/api/media/Videos', videos);
+app.use('/api/media/videos', videos);
 
 const PORT = process.env.PORT || 5000;
 

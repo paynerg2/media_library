@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
+import { Button, Modal, ModalHeader } from 'reactstrap';
+import Octicon from '@githubprimer/octicons-react';
+
 import BookForm from './Forms/BookForm';
 import GameForm from './Forms/GameForm';
 import DiscForm from './Forms/DiscForm';
 import VideoForm from './Forms/VideoForm';
-
-// TODO: Convert to a format which can send data as JSON
 
 class MediaModal extends Component {
     state = { modal: false };
@@ -16,14 +16,35 @@ class MediaModal extends Component {
         }));
     };
 
-    renderForm = type => {
+    renderForm = ({ type, mode }) => {
         if (type === 'book') {
-            return <BookForm onClick={this.toggle} />;
+            console.log(mode);
+            return (
+                <BookForm
+                    onClick={this.toggle}
+                    selectedItem={this.props.selectedItem}
+                    mode={mode}
+                />
+            );
         } else if (type === 'game') {
-            return <GameForm />;
+            // TODO: Convert to class-based component
+            return (
+                <GameForm
+                    onClick={this.toggle}
+                    selectedItem={this.props.selectedItem}
+                    mode={mode}
+                />
+            );
         } else if (type === 'disc') {
-            return <DiscForm />;
+            return (
+                <DiscForm
+                    onClick={this.toggle}
+                    selectedItem={this.props.selectedItem}
+                    mode={mode}
+                />
+            );
         } else if (type === 'video') {
+            // TODO: Convert to class-based component
             //return <VideoForm />;
         }
         return <div />;
@@ -32,14 +53,14 @@ class MediaModal extends Component {
     render() {
         return (
             <div>
-                <Button outline color="primary" onClick={this.toggle}>
-                    +
+                <Button size="sm" outline color="primary" onClick={this.toggle}>
+                    <Octicon icon={this.props.icon} />
                 </Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                    <ModalHeader toggle={this.toggle}>{`Add ${
+                    <ModalHeader toggle={this.toggle}>{`${this.props.mode} ${
                         this.props.type
                     }`}</ModalHeader>
-                    {this.renderForm(this.props.type)}
+                    {this.renderForm(this.props)}
                 </Modal>
             </div>
         );

@@ -9,7 +9,7 @@ import {
     Button
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { saveMediaItem } from '../../actions/mediaItemActions';
+import { saveMediaItem, editMediaItem } from '../../actions/mediaItemActions';
 
 class BookForm extends Component {
     state = {
@@ -22,8 +22,19 @@ class BookForm extends Component {
         ISBN: ''
     };
 
+    componentDidMount() {
+        for (let property in this.props.selectedItem) {
+            if (property) {
+                if (property in this.state) {
+                    this.setState({
+                        [property]: this.props.selectedItem[property]
+                    });
+                }
+            }
+        }
+    }
+
     onChange = e => {
-        console.log(e.target.id);
         this.setState({ [e.target.id]: e.target.value });
     };
 
@@ -40,7 +51,16 @@ class BookForm extends Component {
             ISBN: this.state.ISBN,
             userId: this.props.userId
         };
-        this.props.saveMediaItem('books', newItem);
+
+        if (this.props.mode === 'add') {
+            this.props.saveMediaItem('books', newItem);
+        } else if (this.props.mode === 'edit') {
+            this.props.editMediaItem(
+                'books',
+                this.props.selectedItem._id,
+                newItem
+            );
+        }
     };
 
     render() {
@@ -53,6 +73,7 @@ class BookForm extends Component {
                             type="text"
                             id="title"
                             onChange={this.onChange}
+                            value={this.state.title}
                         />
                     </FormGroup>
                     <FormGroup>
@@ -61,11 +82,17 @@ class BookForm extends Component {
                             type="text"
                             id="author"
                             onChange={this.onChange}
+                            value={this.state.author}
                         />
                     </FormGroup>
                     <FormGroup>
                         <Label for="type">Type</Label>
-                        <Input type="select" id="type" onChange={this.onChange}>
+                        <Input
+                            type="select"
+                            id="type"
+                            onChange={this.onChange}
+                            value={this.state.type}
+                        >
                             <option />
                             <option>manga</option>
                             <option>light novel</option>
@@ -80,6 +107,7 @@ class BookForm extends Component {
                             type="select"
                             id="demographic"
                             onChange={this.onChange}
+                            value={this.state.demographic}
                         >
                             <option />
                             <option>shounen</option>
@@ -95,6 +123,7 @@ class BookForm extends Component {
                             type="text"
                             id="language"
                             onChange={this.onChange}
+                            value={this.state.language}
                         />
                     </FormGroup>
                     <FormGroup>
@@ -103,11 +132,17 @@ class BookForm extends Component {
                             type="text"
                             id="publisher"
                             onChange={this.onChange}
+                            value={this.state.publisher}
                         />
                     </FormGroup>
                     <FormGroup>
                         <Label for="ISBN">ISBN</Label>
-                        <Input type="text" id="ISBN" onChange={this.onChange} />
+                        <Input
+                            type="text"
+                            id="ISBN"
+                            onChange={this.onChange}
+                            value={this.state.ISBN}
+                        />
                     </FormGroup>
                 </ModalBody>
 
@@ -134,5 +169,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { saveMediaItem }
+    { saveMediaItem, editMediaItem }
 )(BookForm);
