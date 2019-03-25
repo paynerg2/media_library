@@ -29,7 +29,6 @@ export default (state = initialState, action) => {
                 )
             };
         case EDIT_MEDIA_ITEM:
-            console.log(action.payload);
             return {
                 ...state,
                 mediaItems: state.mediaItems.map(element =>

@@ -18,7 +18,6 @@ class MediaModal extends Component {
 
     renderForm = ({ type, mode }) => {
         if (type === 'book') {
-            console.log(mode);
             return (
                 <BookForm
                     onClick={this.toggle}
@@ -43,8 +42,13 @@ class MediaModal extends Component {
                 />
             );
         } else if (type === 'video') {
-            // TODO: Convert to class-based component
-            //return <VideoForm />;
+            return (
+                <VideoForm
+                    onClick={this.toggle}
+                    selectedItem={this.props.selectedItem}
+                    mode={mode}
+                />
+            );
         }
         return <div />;
     };

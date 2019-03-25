@@ -11,8 +11,6 @@ import {
 import { connect } from 'react-redux';
 import { saveMediaItem, editMediaItem } from '../../actions/mediaItemActions';
 
-// !BUG: multiplayer inputs don't update correctly
-
 class GameForm extends Component {
     state = {
         title: '',

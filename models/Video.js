@@ -8,7 +8,7 @@ const VideoSchema = new Schema({
         required: true
     },
     episodes: {
-        type: [String],
+        type: Number,
         required: true
     },
     quality: String,

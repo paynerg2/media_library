@@ -12,8 +12,6 @@ class MediaListView extends Component {
     }
 
     renderListItems = ({ mediaItems, userId, selectedType }) => {
-        console.log(userId);
-        console.log(mediaItems);
         return mediaItems
             .filter(item => item.userId === userId)
             .map(item => {
