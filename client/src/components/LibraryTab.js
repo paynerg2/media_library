@@ -17,7 +17,12 @@ class LibraryTab extends Component {
                 <NavItem key={tab}>
                     <NavLink
                         style={{ cursor: 'pointer' }}
-                        onClick={() => this.props.selectedTabChanged(tab)}
+                        onClick={() =>
+                            this.props.selectedTabChanged(
+                                tab,
+                                this.props.userId
+                            )
+                        }
                         className={
                             tab === this.props.selectedTab ? 'active' : ''
                         }
@@ -54,7 +59,8 @@ class LibraryTab extends Component {
 
 const mapStateToProps = state => {
     return {
-        selectedTab: state.selectedTab
+        selectedTab: state.selectedTab,
+        userId: state.auth.userId
     };
 };
 

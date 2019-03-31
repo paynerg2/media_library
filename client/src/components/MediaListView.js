@@ -7,13 +7,10 @@ import MediaListItem from './MediaListItem';
 
 class MediaListView extends Component {
     componentDidMount() {
-        console.log('media list view mounting');
-        console.log(`auth: ${this.props.userId}`);
         this.updateLibrary();
     }
 
     componentDidUpdate(prevProps) {
-        console.log(prevProps);
         if (this.props.userId !== prevProps.userId) {
             this.updateLibrary();
         }
@@ -22,11 +19,9 @@ class MediaListView extends Component {
     updateLibrary() {
         const library = pluralize(this.props.selectedType);
         this.props.getMediaItems(library, this.props.userId);
-        console.log(`libary updated with userId ${this.props.userId}`);
     }
 
     renderListItems = ({ mediaItems, userId, selectedType }) => {
-        console.log(`rendering and userid is ${userId}`);
         return mediaItems.map(item => {
             return (
                 <div key={item._id}>
