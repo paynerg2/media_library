@@ -7,20 +7,33 @@ import MediaListItem from './MediaListItem';
 
 class MediaListView extends Component {
     componentDidMount() {
+        console.log('media list view mounting');
+        console.log(`auth: ${this.props.userId}`);
+        this.updateLibrary();
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log(prevProps);
+        if (this.props.userId !== prevProps.userId) {
+            this.updateLibrary();
+        }
+    }
+
+    updateLibrary() {
         const library = pluralize(this.props.selectedType);
-        this.props.getMediaItems(library);
+        this.props.getMediaItems(library, this.props.userId);
+        console.log(`libary updated with userId ${this.props.userId}`);
     }
 
     renderListItems = ({ mediaItems, userId, selectedType }) => {
-        return mediaItems
-            .filter(item => item.userId === userId)
-            .map(item => {
-                return (
-                    <div key={item._id}>
-                        <MediaListItem item={item} type={selectedType} />
-                    </div>
-                );
-            });
+        console.log(`rendering and userid is ${userId}`);
+        return mediaItems.map(item => {
+            return (
+                <div key={item._id}>
+                    <MediaListItem item={item} type={selectedType} />
+                </div>
+            );
+        });
     };
 
     render() {
@@ -34,9 +47,9 @@ class MediaListView extends Component {
 
 const mapStateToProps = state => {
     return {
-        mediaItems: state.mediaItem.mediaItems,
+        userId: state.auth.userId,
         selectedType: state.selectedTab,
-        userId: state.auth.userId
+        mediaItems: state.mediaItem.mediaItems
     };
 };
 

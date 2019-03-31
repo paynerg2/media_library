@@ -6,9 +6,10 @@ const Disc = require('../../../models/Disc');
 
 // GET : /api/media/discs
 //       Should return all discs
-router.get('/', (req, res) => {
-    console.log('disc get');
+router.get('/:userId', (req, res) => {
     Disc.find()
+        .where('userId')
+        .equals(req.params.userId)
         .sort({ title: 1 })
         .then(discs => res.json(discs));
 });

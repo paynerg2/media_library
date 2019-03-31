@@ -20,7 +20,10 @@ const BookSchema = new Schema({
     },
     language: String,
     publisher: String,
-    userId: String
+    userId: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = Book = mongoose.model('book', BookSchema);

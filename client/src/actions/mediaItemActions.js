@@ -6,8 +6,8 @@ import {
     EDIT_MEDIA_ITEM
 } from './types';
 
-export const getMediaItems = library => dispatch => {
-    Library.get(`/api/media/${library}`).then(res => {
+export const getMediaItems = (library, userId) => dispatch => {
+    Library.get(`/api/media/${library}/${userId}`).then(res => {
         dispatch({
             type: GET_MEDIA_ITEMS,
             payload: res.data

@@ -6,8 +6,10 @@ const Book = require('../../../models/Book');
 
 // @route GET api/media/books
 // @desc Get all books
-router.get('/', (req, res) => {
+router.get('/:userId', (req, res) => {
     Book.find()
+        .where('userId')
+        .equals(req.params.userId)
         .sort({ title: 1 })
         .then(books => res.json(books));
 });
@@ -26,7 +28,18 @@ router.post('/', (req, res) => {
         userId: req.body.userId
     });
 
-    newBook.save().then(book => res.json(book));
+    // !Test code
+    const newItem = new Book({
+        ...req.body
+    });
+    console.log('new item:');
+    console.log(newItem);
+    console.log('new book:');
+    console.log(newBook);
+    //!
+
+    newItem.save().then(item => res.json(item));
+    //newBook.save().then(book => res.json(book));
 });
 
 // @route DELETE api/media/books/:id

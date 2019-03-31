@@ -6,8 +6,10 @@ const Game = require('../../../models/Game');
 
 // GET:     /api/media/games
 //          Return all games
-router.get('/', (req, res) => {
+router.get('/:userId', (req, res) => {
     Game.find()
+        .where('userId')
+        .equals(req.params.userId)
         .sort({ title: 1 })
         .then(games => res.json(games));
 });

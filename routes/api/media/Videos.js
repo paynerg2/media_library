@@ -5,8 +5,10 @@ const Video = require('../../../models/Video');
 
 // GET : /api/media/videos
 //      Return all videos
-router.get('/', (req, res) => {
+router.get('/:userId', (req, res) => {
     Video.find()
+        .where('userId')
+        .equals(req.params.userId)
         .sort({ title: 1 })
         .then(videos => res.json(videos));
 });

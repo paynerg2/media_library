@@ -9,6 +9,9 @@ const initialState = {
     mediaItems: []
 };
 
+// TODO: sorting new additions to the state so that new items don't show up out of order.
+// TODO: would this remove any of the benefits of memoization since it would need to re-render every time regardless?
+
 export default (state = initialState, action) => {
     switch (action.type) {
         case GET_MEDIA_ITEMS:
