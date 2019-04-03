@@ -15,7 +15,7 @@ const middleware = [bodyParser.json(), cors()];
 app.use(...middleware);
 
 // DB Config
-const db = require('./config/keys').mongoURI;
+const db = require('./config').mongoURI;
 
 // Connect to Mongo
 mongoose

@@ -2,6 +2,7 @@ import { SELECTED_TAB_CHANGED, GET_MEDIA_ITEMS } from './types';
 import Library from '../apis/Library';
 
 // TODO: implement some form of memoization
+// TODO: may be a good idea to just filter what's displayed instead of fetching data again
 
 export const selectedTabChanged = (tab, userId) => async dispatch => {
     await dispatch({
